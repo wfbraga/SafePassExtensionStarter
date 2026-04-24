@@ -2,6 +2,8 @@ import { Controller }  from "@hotwired/stimulus";
 
 import { setSessionStorage} from "../services/storage_service.js";
 
+import { clearSessionStorage } from "../services/storage_service.js";
+
 class AuthController extends Controller{
     static targets = ['flash', 'email', 'password']
 
@@ -30,5 +32,10 @@ class AuthController extends Controller{
             console.log(error)
         }
     }
+    async signOut(){
+        await clearSessionStorage('token')
+        Turbo.visit('/frames/signing.html', { frame: 'app'})
+    }
 }
+
 export default AuthController
