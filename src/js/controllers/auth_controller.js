@@ -1,5 +1,7 @@
 import { Controller }  from "@hotwired/stimulus";
 
+import { setSessionStorage} from "../services/storage_service.js";
+
 class AuthController extends Controller{
     static targets = ['flash', 'email', 'password']
 
@@ -14,14 +16,14 @@ class AuthController extends Controller{
                 headers: { "Content-type": "application/json" }
             })
             const data = await response.json()
-            console.log(data)
+
             if(data.error){
                 this.flashTarget.innerHTML =`<div class="p-3 bg-danger text-white rounded my-3">
                                                 ${data.error}
                                              </div>`
             }
             if(data.token){
-                console.log(data.token)
+                setSessionStorage({token: data.token})
                 Turbo.visit('/frames/entries.html', {frame: 'app'})
             }
         } catch (error){
