@@ -1,9 +1,8 @@
 #popup-page {
-    width: 550px;
-    height: var(--popup-height);
+  width: 550px;
+  height: var(--popup-height);
 }
 
-#popup-page .popup-page_container {
-    width: 100%;
-    height: 100%;
+#popup-page .popup-page__container {
+  height: 100%;
 }
