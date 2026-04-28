@@ -25,13 +25,9 @@ class SearchController extends Controller {
         this.itemTargets.forEach(item => item.hidden = false)
     }
     toggleClearButton(event){
-        if(event.target.value){
-            this.toggleClearButton.hidden = false
-        } else{
-            this.toggleClearButton.hidden = true
-        }
+        this.toggleClearButton.hidden = !event.target.value;
     }
-    clearSearch(event){
+    clearSearch(){
         this.inputTarget.value = ''
         this.clearButtonTarget.hidden = true
         this.showItems()

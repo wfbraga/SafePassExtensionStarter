@@ -67,7 +67,7 @@ class EntriesController extends Controller {
             console.log('Invalid URL in Active Tab', error)
         }
 
-        const activeEntry = params.entry.url == parsedUrl.href
+        const activeEntry = params.entry.url === parsedUrl.href
 
         console.log("active entry is", activeEntry)
 
